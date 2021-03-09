@@ -17,9 +17,6 @@ BuildRequires:  tcp_wrappers-devel
 %description
 Stunnel is a proxy designed to add TLS encryption functionality to existing clients and servers without any changes in the programs' code.
 
-%post
-/usr/bin/libtool --finish /usr/local/lib/stunnel
-
 %prep
 %setup
 
