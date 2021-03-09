@@ -1,7 +1,7 @@
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 
 Name:		stunnel
-Version:	5.57
+Version:	5.58
 Release:	1%{?dist}
 Summary:	TLS enabling proxy
 
@@ -11,10 +11,14 @@ Source0:	https://www.stunnel.org/downloads/%{name}-%{version}.tar.gz
 
 BuildRequires:  gcc
 BuildRequires:  openssl-devel
+BuildRequires:  systemd-devel
 BuildRequires:  tcp_wrappers-devel
 
 %description
 Stunnel is a proxy designed to add TLS encryption functionality to existing clients and servers without any changes in the programs' code.
+
+%post
+/usr/bin/libtool --finish /usr/local/lib/stunnel
 
 %prep
 %setup
@@ -36,5 +40,7 @@ make install DESTDIR=%{buildroot}
 %doc /usr/local/share/man/man8/stunnel*
 
 %changelog
+* Mon Mar 8 2021 Irving Leonard <mm-irvingleonard@github.com> 5.58-1
+- Upgraded to version 5.58
 * Thu Oct 15 2020 Irving Leonard <mm-irvingleonard@github.com> 5.57-1
 - Initial RPM release

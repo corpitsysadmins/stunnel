@@ -18,3 +18,4 @@ done
 yum-builddep -y rpmbuild/SPECS/stunnel.spec
 spectool -g -R rpmbuild/SPECS/stunnel.spec
 rpmbuild -ba rpmbuild/SPECS/stunnel.spec
+s
